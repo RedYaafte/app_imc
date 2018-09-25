@@ -1,0 +1,8 @@
+
+node_modules/
+dist/
+
+*.swp
+*.swa
+.DS_Store
+
