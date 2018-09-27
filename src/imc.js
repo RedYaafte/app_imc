@@ -1,5 +1,6 @@
 
 // Cache del DOM
+// https://github.com/Ernjivi/app_imc
 
 var button = document.querySelector('button');
 var inputPeso = document.querySelector('#peso');
