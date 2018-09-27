@@ -5,10 +5,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
-    entry : './index.js',
+    entry : {
+        imc: './imc.js',
+        users: './users.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name]-[hash:5]-bundle.js'
     },
     module: {
         rules: [
@@ -19,6 +22,15 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({template: './index.html'})
+        new HtmlWebpackPlugin({
+            template: './detail.html',
+            filename: 'detail.html',
+            chunks: ['imc']
+        }),
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            filename: 'index.html',
+            chunks: ['users']
+        })
     ]
 }
