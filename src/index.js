@@ -1,35 +1,32 @@
 
-// Seleccion del DOM
-// var h1 = document.querySelector('h1');
-// console.log(h1);
+// Cache del DOM
 
-// var input = document.querySelector('#dataInput');
-// input.value = 'Hola ¿Cómo estás?';
-// console.log(input.value);
-// console.log(input);
+var button = document.querySelector('button');
+var inputPeso = document.querySelector('#peso');
+var inputAltura = document.querySelector('#altura');
+var content = document.querySelector('#content');
+var data = [];
 
-// var items = document.querySelectorAll('li');
-// console.log(items);
+// Declara functionalidad
 
-// Modificar el DOM
+processForm = () => {
+    // Regresar objecto con los datos
+    return {
+        peso: inputPeso.value,
+        altura: inputAltura.value,
+        fecha: new Date(),
+        imc: inputPeso.value / inputAltura.value**2
+    }
+}
 
-// h1.textContent = "Foooo<p>Hola</p>"; // Modifica solo el nodo de texto
-// h1.innerHTML = "Foooo<p>Hola</p>"; // Puede agregar HTML
+render = (data) => {
+    content.textContent = JSON.stringify(data);
+}
 
-// Event Listeners
+// Event Handling
 
-// var button = document.querySelector('button');
+button.addEventListener('click', () => {
+    data.push(processForm());
+    render(data);
+})
 
-// button.addEventListener('click', (evt) => {
-//     console.log(evt.target);
-//     console.log('Ouch!!!');
-// })
-
-
-// Ejercicio.
-// Registrar peso y altura a travez de inputs.
-
-// Un boton que al dar click tome valor de peso y altura
-// y calcule imc.
-
-// lo debe de guardar en un arreglo y mostrarlo al final del documento.
