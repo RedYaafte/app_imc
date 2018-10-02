@@ -30,4 +30,3 @@ button.addEventListener('click', () => {
     data.push(processForm());
     render(data);
 })
-
