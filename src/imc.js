@@ -10,18 +10,34 @@ var data = [];
 
 // Declara functionalidad
 
+var init = () => {
+  console.log(window.location.href);
+  fetch("http://localhost:3000/imc")
+    .then((users) => users.json())
+    .then((jsonData) => {
+      data = jsonData;
+      render();
+    })
+}
+
 processForm = () => {
     // Regresar objecto con los datos
     return {
-        peso: inputPeso.value,
-        altura: inputAltura.value,
-        fecha: new Date(),
+        weight: inputPeso.value,
+        height: inputAltura.value,
+        // fecha: new Date(),
         imc: inputPeso.value / inputAltura.value**2
     }
 }
 
-render = (data) => {
-    content.textContent = JSON.stringify(data);
+render = () => {
+    content.innerHtml = '';
+    data.forEach((user) => {
+      let item = document.createElement('li');
+      let itemText = document.createTextNode(`peso: ${user.weight} altura: ${user.height} imc: ${user.imc}`);
+      item.appendChild(itemText);
+      content.appendChild(item);
+    })
 }
 
 // Event Handling
@@ -30,3 +46,5 @@ button.addEventListener('click', () => {
     data.push(processForm());
     render(data);
 })
+
+init();
