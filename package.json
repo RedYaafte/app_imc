@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ernjivi/app_imc.git"
+    "url": "git+https://github.com/RedYaafte/app_imc"
   },
-  "author": "Ernesto Jiménez Villaseñor",
+  "author": "Yafté R. Muñoz Lujano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ernjivi/app_imc/issues"
+    "url": "https://github.com/RedYaafte/app_imc/issues"
   },
-  "homepage": "https://github.com/Ernjivi/app_imc#readme",
+  "homepage": "https://github.com/RedYaafte/app_imc#readme",
   "dependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",

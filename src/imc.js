@@ -1,7 +1,5 @@
 
 // Cache del DOM
-// https://github.com/Ernjivi/app_imc
-
 var button = document.querySelector('button');
 var inputPeso = document.querySelector('#peso');
 var inputAltura = document.querySelector('#altura');
@@ -11,13 +9,17 @@ var data = [];
 // Declara functionalidad
 
 var init = () => {
-  console.log(window.location.href);
-  fetch("http://localhost:3000/imc")
-    .then((users) => users.json())
-    .then((jsonData) => {
-      data = jsonData;
-      render();
-    })
+    var paramsString = location.search //JSON.stringify(location.search)
+    var searchParams = new URLSearchParams(paramsString);
+    var paramsId = searchParams.get("user_id")
+    console.log(paramsId);
+
+    fetch(`http://localhost:3000/imc?user_id=${paramsId}`)
+        .then((users) => users.json())
+        .then((jsonData) => {
+            data = jsonData;
+            render();
+        })
 }
 
 processForm = () => {
@@ -34,7 +36,8 @@ render = () => {
     content.innerHtml = '';
     data.forEach((user) => {
       let item = document.createElement('li');
-      let itemText = document.createTextNode(`peso: ${user.weight} altura: ${user.height} imc: ${user.imc}`);
+      let itemText = document.createTextNode(
+          `peso: ${user.weight} altura: ${user.height} imc: ${user.imc}`);
       item.appendChild(itemText);
       content.appendChild(item);
     })
