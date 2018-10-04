@@ -7,13 +7,12 @@ var content = document.querySelector('#content');
 var data = [];
 
 // Declara functionalidad
+var paramsString = location.search //JSON.stringify(location.search)
+var searchParams = new URLSearchParams(paramsString);
+var paramsId = searchParams.get("user_id")
+console.log(paramsId);
 
 var init = () => {
-    var paramsString = location.search //JSON.stringify(location.search)
-    var searchParams = new URLSearchParams(paramsString);
-    var paramsId = searchParams.get("user_id")
-    console.log(paramsId);
-
     fetch(`http://localhost:3000/imc?user_id=${paramsId}`)
         .then((users) => users.json())
         .then((jsonData) => {
